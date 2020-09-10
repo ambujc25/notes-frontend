@@ -1,0 +1,32 @@
+<div class="form-container">
+
+    <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">   <!--Event binding, Event is submitting(ngSubmit) we call the function onSubmit() and pass in the form object as argument(noteForm) -> template reference variable-->
+        <div class="field">                                     <!--Bulma class for form creation-->
+            <label class="label">Title</label>                  <!--Also a Bulma class-->
+            <div class="control">                               <!--Also a Bulma class-->
+                <input type="text" name="title" [ngModel]="note.title" required class="input">  <!--This is the note variable (note.title) of type Note in our ts file-->
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field">
+            <label class="label">Body</label>
+            <div class="control">
+                <textarea class="textarea" name="body" [ngModel]="note.body" ></textarea>
+            </div>
+        </div>
+
+        <div class="field is-grouped is-pulled-right">
+            <div class="control">
+                <button class="button is-text" type="button" (click)="cancel()">Cancel</button>
+            </div>
+
+            <div class="control">
+                <button class="button is-primary" type="submit" [disabled]="!noteForm.valid">Save</button>
+            </div>
+        </div>
+
+    </form>
+
+</div> 

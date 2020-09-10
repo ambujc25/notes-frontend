@@ -1,0 +1,28 @@
+<div class="main-container">
+
+    <div class="search-bar-container">
+        <div class="field">
+            <p class="control has-icons-left">
+                <input class="input" type="text" placeholder="Filter">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="notes-list" [@listAnim]>
+        <app-note-card 
+        *ngFor="let note of notes; index as i"
+        [link]="i" 
+        [@itemAnim]
+        (delete)="deleteNote(i)"
+        [title]="note.title" 
+        [body]="note.body"></app-note-card>
+        <!-- Strings must be encapsulated in '' single quotes because angular expects an expression/property-name there inside the "" double quotes-->
+        <!-- We can also just remove the square brackets and not use single quotes inside the double quotes (like the body)-->
+    </div>
+
+    <button class="button floating-add-button is-primary" routerLink="new">+ Add</button>
+
+</div>
